@@ -9,6 +9,8 @@ namespace PLX {
     class Function : public Object {
     public:
         Function(List* parameters, Object* body);
+        List* getParams();
+        Object* getBody();
 
         // Unique functions ------------------------------------------------
 
@@ -19,7 +21,8 @@ namespace PLX {
         TypeId typeId() const override;
 
     private:
-
+        List* _params;
+        Object* _body;
     };
 
 }

@@ -15,7 +15,6 @@
 
 namespace PLX {
 
-#if 0
     class Function_Test : public PlxTestFixture {};
 
     TEST_F(Function_Test, CreateInstance) {
@@ -57,6 +56,5 @@ namespace PLX {
         ss << fun1;
         EXPECT_EQ("fun (x) = y", ss.str());
     }
-#endif
 
 }

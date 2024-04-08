@@ -16,7 +16,6 @@ namespace PLX {
 
     class Apply_Test : public PlxTestFixture {};
 
-#if 0
     TEST_F(Apply_Test, CreateInstance) {
         Identifier* x = Identifier::create("x");
         Apply* apply = new Apply(x, GLOBALS->EmptyList());
@@ -62,6 +61,5 @@ namespace PLX {
             EXPECT_EQ("(fun (x) = x)(y)", ss.str());
         }
     }
-#endif
 
 }

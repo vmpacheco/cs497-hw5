@@ -10,6 +10,7 @@ namespace PLX {
 
     class Closure : public Object {
     public:
+        Closure(Function* fun, Triple* environment);
 
         // Overridden functions --------------------------------------------
 
@@ -18,7 +19,8 @@ namespace PLX {
         TypeId typeId() const override;
 
     private:
-
+        Function* _function;
+        Triple* _lexicalEnvironment;
     };
 
 }

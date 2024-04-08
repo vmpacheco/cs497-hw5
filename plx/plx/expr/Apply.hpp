@@ -6,10 +6,14 @@ namespace PLX {
 
     class Apply : public Object {
     public:
+        Apply(Object* abstractionObj, List* args);
+
         Object* eval(Evaluator* etor) override;
         void showOn(std::ostream& ostream) const override;
         TypeId typeId() const override;
     private:
+        Object* _abstractionObj;
+        List* _arguments;
     };
 
 }

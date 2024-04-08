@@ -5,11 +5,34 @@
 #include <plx/expr/Apply.hpp>
 #include <plx/object/TypeIds.hpp>
 #include <plx/object/TypeIds.hpp>
+#include <plx/object/Globals.hpp>
+#include <plx/literal/Nil.hpp>
 
 namespace PLX {
 
+    Apply::Apply(Object* abstractionObj, List* args)
+        : _abstractionObj {abstractionObj}
+        , _arguments {args}
+    {}
+
+    Object* Apply::eval(Evaluator* etor) {
+        Object* abstr = etor->evalExpr(_abstractionObj);
+        return abstr->apply(etor, _arguments);
+
+        /*
+        etor->evalExpr(_abstractionObj);
+        List* args = _arguments;
+
+        while(!args->isEmpty()) {
+            args->setFirst(etor->evalExpr(args->first()));
+            args = args->restAsList();
+        }
+
+        _abstractionObj->apply(etor, args);
+        */
+    }
+
     void Apply::showOn(std::ostream& ostream) const {
-#if 0
         switch (_abstractionObj->typeId()) {
             case TypeId::D_CLOSURE:
             case TypeId::E_FUNCTION:
@@ -21,9 +44,6 @@ namespace PLX {
                 break;
         }
         _arguments->showOnWith(ostream, "(", ", ", ")");
-#else
-    (void)ostream;
-#endif
     }
 
     TypeId Apply::typeId() const {
